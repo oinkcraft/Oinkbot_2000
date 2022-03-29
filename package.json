@@ -1,0 +1,30 @@
+{
+  "name": "oinkbot_2000",
+  "version": "1.0.0",
+  "description": "Oinkbot written on Node JS 16+ and the latest and greatest from Discord JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oinkcraft/Oinkbot_2000.git"
+  },
+  "keywords": [
+    "oinkbot",
+    "discord",
+    "discord",
+    "bot",
+    "bot"
+  ],
+  "author": "Dendrobyte",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oinkcraft/Oinkbot_2000/issues"
+  },
+  "homepage": "https://github.com/oinkcraft/Oinkbot_2000#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  }
+}

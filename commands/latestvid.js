@@ -8,7 +8,7 @@ module.exports = {
     .setDescription("Shows you the latest video from the [lifestyle|cowdino arcade] channel"), 
     // TODO: Arguments?
     async execute(interaction){
-        let latestLifestyleVidUrl = latestVideos.lifestyle
-        await interaction.reply(`The latest lifestyle video is ${latestVidUrl}`)
+        let latestLifestyleVidId = latestVideos.lifestyle
+        await interaction.reply(`The latest lifestyle video is http://www.youtube.com/watch?v=${latestLifestyleVidId}`)
     },
 };

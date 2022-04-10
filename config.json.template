@@ -1,3 +1,23 @@
 {
-    "token": "your token here"
+    "clientId": "634095180450103296",
+    "guildId": "632002605891059723",
+    "token": "discord-token-here",
+    "integrations": {
+        "youtube": {
+            "key": "google-api-v3",
+            "playlistIDs": {
+                "lifestyle": "UUh7mi5sI3BSzKReLzXpgimA",
+                "devlog": "PLOny7uVQmd7FXlaZzUu29LL474yoM6i5k",
+                "cowdino": "PL3L3JHrBafNwB_jKc0EPe31Pdjx0dRFCv",
+                "vgt": "PL3L3JHrBafNwB_jKc0EPe31Pdjx0dRFCv"
+            },
+            "notifRoles": {
+                "lifestyle": "846897558764912671",
+                "devlog": "846897609317679114",
+                "cowdino": "846897590092038164",
+                "vgt": "846897512006549515"
+            },
+            "notifChannel": "795776459997577256"
+        }
+    }
 }

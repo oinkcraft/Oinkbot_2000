@@ -18,7 +18,6 @@ async function getLatestLifestyleVideo(client) {
     let currVidId = latestVidInPlaylist.id
     let channel = client.channels.cache.get(config.integrations.youtube.notifChannel)
 
-    channel.send(`Retrieved ${currVidId}`)
     if (mostRecentVidId === currVidId) {
         return 0
     } else {

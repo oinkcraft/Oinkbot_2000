@@ -16,7 +16,6 @@ async function getLatestLifestyleVideo(client) {
     // Check against last retrieved video
     let mostRecentVidId = latestVideos.lifestyle
     let currVidId = latestVidInPlaylist.id
-    let channel = client.channels.cache.get(config.integrations.youtube.notifChannel)
 
     if (mostRecentVidId === currVidId) {
         return 0
@@ -43,16 +42,72 @@ async function getLatestLifestyleVideo(client) {
     }
 }
 
+/* Retrieve latest cowdino video */
+async function getLatestCowdinoVideo(client) {
+    const { latestVideos } = require('./latestvids.json')
+
+    // Get the playlist of all videos and details of the latest video
+    let playlist = await youtube.getPlaylistByID(config.integrations.youtube.playlistIDs.cowdino)
+    let latestVidInPlaylist = playlist[0]
+    
+    // Check against last retrieved video
+    let mostRecentVidId = latestVideos.cowdino
+    let currVidId = latestVidInPlaylist.id
+
+    if (mostRecentVidId === currVidId) {
+        return 0
+    } else {
+        // Send out the details
+        let currVidTitle = latestVidInPlaylist.title
+        let msg = `<@&${config.integrations.youtube.notifRoles.cowdino}> **NEW COWDINO ARCADE VIDEO!**\n\n_${currVidTitle}_\n\n:link: https://www.youtube.com/watch?v=${currVidId}`
+        let channel = client.channels.cache.get(config.integrations.youtube.notifChannel)
+
+        if (currVidTitle.toLowerCase().includes('vgt')) {
+            msg = `<@&${config.integrations.youtube.notifRoles.vgt}> **NEW VIDEO GAME THERAPY!**\n\n_${currVidTitle}_\n\n:link: https://www.youtube.com/watch?v=${currVidId}`
+        }
+
+        channel.send(msg)
+
+        // Update the latest video
+        latestVideos.cowdino = currVidId
+        let newData = JSON.stringify({ "latestVideos": latestVideos })
+        fs.writeFile('./feats/ytnotifs/latestvids.json', newData, (err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log("Latest video IDs updated.")
+            }
+        })
+        return 1
+    }
+}
+
 /* Middle call and check */
 let getLatestVids = () => {
     console.log('Checking for latest videos...')
+    // Check for latest lifestyle
     getLatestLifestyleVideo(client)
     .then(res => {
         // TODO: Get latest cowdino video
         if (res === 0) {
-            console.log('No latest videos found.')
+            console.log('No latest lifestyle video found.')
         } else {
-            console.log("Latest vids found! Messages posted to channel.")
+            console.log("New lifestyle video found! Message posted to channel.")
+        }
+    })
+    .catch(err => {
+        console.log("Error with video notifier!")
+        console.log(err)
+    })
+
+    // Check for latest cowdino
+    getLatestCowdinoVideo(client)
+    .then(res => {
+        // TODO: Get latest cowdino video
+        if (res === 0) {
+            console.log('No latest cowdino video found.')
+        } else {
+            console.log("New cowdino video found! Message posted to channel.")
         }
     })
     .catch(err => {

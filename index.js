@@ -4,7 +4,7 @@ const { Client, Collection, Intents } = require('discord.js');
 const { token, integrations } = require('./config.json');
 
 // Create a new client instance
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 // Create a Collection of commands for easier access from other files
 client.commands = new Collection();
@@ -37,7 +37,7 @@ eventFiles.forEach((fileName) => {
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
-		client.on(event.name, (...args) => event.execute(...args));
+		client.on(event.name, (...args) => event.execute(...args, client));
 	}
 })
 

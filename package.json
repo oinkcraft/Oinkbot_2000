@@ -1,6 +1,6 @@
 {
   "name": "oinkbot_2000",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Oinkbot written on Node JS 16+ and the latest and greatest from Discord JS",
   "main": "index.js",
   "scripts": {

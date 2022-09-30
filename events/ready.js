@@ -7,6 +7,8 @@ module.exports = {
         // Initalize youtubevideo notifier
         const ytNotifier = require('../feats/ytnotifs/ytnotifclient')
         ytNotifier.start(client)
+        const jpAlert = require('../feats/togglalert/jpalert')
+        jpAlert.start(client)
         // TODO: Disable this if the key is "0000" or something
     } 
 }

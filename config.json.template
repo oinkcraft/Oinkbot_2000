@@ -2,6 +2,10 @@
     "clientId": "634095180450103296",
     "guildId": "632002605891059723",
     "token": "discord-token-here",
+    "channels": {
+        "auditLog": "484047466778329109",
+        "accountability": "1005489841145917472"
+    },
     "integrations": {
         "youtube": {
             "key": "google-api-v3",
@@ -18,6 +22,9 @@
                 "vgt": "846897512006549515"
             },
             "notifChannel": "795776459997577256"
+        },
+        "toggl": {
+            "key": "0000"
         }
     }
 }
